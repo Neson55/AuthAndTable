@@ -1,12 +1,11 @@
-import React from "react";
 import { useTableQuery } from "../services/tableApi";
-import moment from "moment";
+import { formatTime } from "../../utils/formatTime";
 
 export const Table = () => {
-  const { data, isLoading, isError, isSuccess } = useTableQuery({"page":1,"last_page":0,"sort_field":"id","sort":"desc","search_string":null,"device_state":"all","is_archived":false,"paginate":true,"append_fields":["active_polling","attributes","tied_point"],"per_page":10});
+  const { data, isLoading, isError, isSuccess } = useTableQuery({ "page": 1, "last_page": 0, "sort_field": "id", "sort": "desc", "search_string": null, "device_state": "all", "is_archived": false, "paginate": true, "append_fields": ["active_polling", "attributes", "tied_point"], "per_page": 10 });
 
   const array = data?.data.metering_devices?.data.map((item) => {
-    const lastActive = item.last_active ? moment(item.last_active).format("DD.MM.YYYY HH:mm") : "";
+    const lastActive = formatTime(item.last_active);
     return {
       ...item,
       last_active: lastActive,
@@ -44,7 +43,7 @@ export const Table = () => {
                 <td className="px-6 py-3 border">{item.id}</td>
                 <td className="px-6 py-3 border">{item.name}</td>
                 <td className="px-6 py-3 border">
-                  { array && array[index] && (
+                  {array && array[index] && (
                     <>
                       <div>{array[index].last_active}</div>
                     </>

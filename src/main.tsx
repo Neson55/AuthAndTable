@@ -2,7 +2,6 @@ import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import { Login } from "./app/components/login"
@@ -20,14 +19,14 @@ if (container) {
     },
     {
       path: "/",
-      element:  <Login />
+      element: <Login />
     },
   ])
 
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-       <RouterProvider router ={router} />
+        <RouterProvider router={router} />
       </Provider>
     </React.StrictMode>,
   )
