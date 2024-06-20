@@ -1,9 +1,10 @@
-import moment from "moment"
+import moment from "moment";
 
 export const formatTime = (time: number | null) => {
   if (time) {
-    return moment(time).format("DD.MM.YYYY HH:mm")
+    const momentTime = moment.unix(time);
+    return momentTime.format("DD.MM.YYYY HH:mm");
   } else {
-    return "null"
+    return "null";
   }
-}
+};

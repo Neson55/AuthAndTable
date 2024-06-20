@@ -12,6 +12,8 @@ export const Table = () => {
     };
   });
 
+const time1: Date = new Date();
+
   return (
     <div className=" flex justify-center h-screen w-screen items-center">
       {isLoading && (
@@ -48,8 +50,9 @@ export const Table = () => {
                       <div>{array[index].last_active}</div>
                     </>
                   )}
+                 
                 </td>
-                {/* ... */}
+                
               </tr>
             ))}
           </tbody>
